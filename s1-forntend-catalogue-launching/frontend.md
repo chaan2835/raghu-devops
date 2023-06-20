@@ -34,7 +34,7 @@ vim /etc/nginx/default.d/roboshop.conf
     root   /usr/share/nginx/html;
     try_files $uri /images/placeholder.jpg;
     }
-    location /api/catalogue/ { proxy_pass http://localhost:8080/; }
+    location /api/catalogue/ { proxy_pass http://localhost:8080/; } # after creating of respective service give the private ip and restart the nginx do the same for all below
     location /api/user/ { proxy_pass http://localhost:8080/; }
     location /api/cart/ { proxy_pass http://localhost:8080/; }
     location /api/shipping/ { proxy_pass http://localhost:8080/; }
