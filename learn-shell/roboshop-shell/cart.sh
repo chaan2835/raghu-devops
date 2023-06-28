@@ -8,6 +8,7 @@ echo -e "\e[36m########### Adding application user #############\e[0m"
 useradd roboshop
 
 echo -e "\e[36m########### creating Application directory #############\e[0m"
+rm -rf /app
 mkdir /app
 
 echo -e "\e[36m########### updating redis listen address #############\e[0m"
@@ -16,7 +17,7 @@ cd /app
 
 echo -e "\e[36m########### Downloading app content #############\e[0m"
 unzip /tmp/cart.zip
-cd /app
+
 
 echo -e "\e[36m########### Installing npm modules #############\e[0m"
 npm install
