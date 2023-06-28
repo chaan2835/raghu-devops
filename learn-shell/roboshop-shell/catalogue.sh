@@ -26,7 +26,7 @@ echo -e "\e[36m########### Installing node modules #############\e[0m"
 npm install
 
 echo -e "\e[36m########### Coying catalogue.service to /etc #############\e[0m"
-cp catalogue.service /etc/systemd/system/catalogue.service
+cp /home/centos/raghu-devops/learn-shell/roboshop-shell/catalogue.service /etc/systemd/system/catalogue.service
 
 echo -e "\e[36m########### Reloading daemon #############\e[0m"
 systemctl daemon-reload
@@ -38,7 +38,7 @@ echo -e "\e[36m########### Restarting the service #############\e[0m"
 systemctl restart catalogue
 
 echo -e "\e[36m########### Copying the mongo.repo to /etc #############\e[0m"
-cp mongo.repo /etc/yum.repos.d/mongo.repo
+cp /home/centos/raghu-devops/learn-shell/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
 echo -e "\e[36m########### Installing mongodb client #############\e[0m"
 yum install mongodb-org-shell -y
