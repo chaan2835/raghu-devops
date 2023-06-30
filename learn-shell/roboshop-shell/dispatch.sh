@@ -1,5 +1,7 @@
+source common.sh
+
 yum install golang -y
-useradd roboshop
+useradd ${app_user}
 mkdir /app
 curl -L -o /tmp/dispatch.zip https://roboshop-artifacts.s3.amazonaws.com/dispatch.zip
 cd /app
