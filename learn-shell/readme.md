@@ -49,3 +49,10 @@ COLm --> color code
     shell script supports only --> Red(31m),Green(32m),Yellow(33m),Blue(34m),Magenta(35m),Cyan(36m)
 \e[0m --> Disable the color
     once we enable the we have to disable it otherwise it'll follow for next lines also
+
+================================
+
+$0 --> script name
+$1 to $n --> arguments parsed in the order
+$*,$@ --> al arguments
+$# --> Number of arguments
