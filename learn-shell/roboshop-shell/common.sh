@@ -7,14 +7,17 @@ heading_func(){
 }
 
 schema_setup_func(){
-    heading_func "Copying the mongo.repo to /etc"
-    cp /home/centos/raghu-devops/learn-shell/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
+    if [ "$schema_setup" == "mongo" ]; then
 
-    heading_func "Installing mongodb client"
-    yum install mongodb-org-shell -y
+        heading_func "Copying the mongo.repo to /etc"
+        cp /home/centos/raghu-devops/learn-shell/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
 
-    heading_func "Loading schema--->{component}"
-    mongo --host mongodb.roboshopk8.online </app/schema/${component}.js
+        heading_func "Installing mongodb client"
+        yum install mongodb-org-shell -y
+
+        heading_func "Loading schema--->{component}"
+        mongo --host mongodb.roboshopk8.online </app/schema/${component}.js
+    fi
 }
 
 func_nodejs(){
@@ -49,5 +52,6 @@ func_nodejs(){
     systemctl daemon-reload
     systemctl enable ${component}
     systemctl restart ${component}
+
     schema_setup_func
 }
