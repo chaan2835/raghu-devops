@@ -27,10 +27,10 @@ func_nodejs(){
     echo -e "\e[36m########### Installing npm modules #############\e[0m"
     npm install
 
-    echo -e "\e[36m########### creating application directory #############\e[0m"
+    echo -e "\e[36m########### creating Aplication directory #############\e[0m"
     cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
-    echo -e "\e[36m########### Restarting service #############\e[0m"
+    echo -e "\e[36m########### Restarting ${component}-service #############\e[0m"
     systemctl daemon-reload
     systemctl enable ${component}
     systemctl restart ${component}
