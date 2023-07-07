@@ -1,7 +1,7 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
-
+my_sql_password=#1
 echo -e "\e[36m########### Disabling mysql default version #############\e[0m"
 yum module disable mysql -y
 
@@ -16,5 +16,5 @@ systemctl enable mysqld
 systemctl restart mysqld
 
 echo -e "\e[36m########### Resetting mysql password #############\e[0m"
-mysql_secure_installation --set-root-pass RoboShop@1
+mysql_secure_installation --set-root-pass ${my_sql_password}
 # mysql -uroot -pRoboShop@1

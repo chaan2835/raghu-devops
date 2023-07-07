@@ -1,6 +1,7 @@
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
+shipping_password=#1
 
 echo -e "\e[36m########### Installing maven #############\e[0m"
 yum install maven -y
@@ -29,7 +30,7 @@ echo -e "\e[36m########### Installing mysql #############\e[0m"
 yum install mysql -y
 
 echo -e "\e[36m########### Loading schema #############\e[0m"
-mysql -h mysql.roboshopk8.online -uroot -pRoboShop@1 < /app/schema/shipping.sql
+mysql -h mysql.roboshopk8.online -uroot -p${shipping_password} < /app/schema/shipping.sql
 
 echo -e "\e[36m########### starting service #############\e[0m"
 systemctl daemon-reload
