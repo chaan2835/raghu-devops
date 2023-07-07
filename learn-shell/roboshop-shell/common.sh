@@ -2,35 +2,39 @@ app_user=roboshop
 script=$(realpath "$0")
 script_path=$(dirname "$script")
 
+heading_func(){
+    echo -e "\e[36m########### $1 #############\e[0m"
+}
+
 func_nodejs(){
-    echo -e "\e[36m########### Configuring nodejs repos #############\e[0m"
+
+    heading_func "Configuring nodejs repos"
     curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
-    echo -e "\e[36m########### Installing nodejs #############\e[0m"
+    heading_func "Installing nodejs"
     yum install nodejs -y
 
-    echo -e "\e[36m########### Adding application user #############\e[0m"
+    heading_func "Adding application user"
     useradd ${app_user}
 
-    echo -e "\e[36m########### creating Application directory #############\e[0m"
+    heading_func "creating Application directory"
     rm -rf /app
     mkdir /app
 
-    echo -e "\e[36m########### updating redis listen address #############\e[0m"
+    heading_func "updating redis listen address"
     curl -L -o /tmp/${component}.zip https://roboshop-artifacts.s3.amazonaws.com/${component}.zip
     cd /app
 
-    echo -e "\e[36m########### Downloading app content #############\e[0m"
+    heading_func "Downloading app content"
     unzip /tmp/${component}.zip
 
-
-    echo -e "\e[36m########### Installing npm modules #############\e[0m"
+    heading_func "Installing npm modules"
     npm install
 
-    echo -e "\e[36m########### creating Aplication directory #############\e[0m"
+    heading_func "creating Aplication directory"
     cp ${script_path}/${component}.service /etc/systemd/system/${component}.service
 
-    echo -e "\e[36m########### Restarting ${component}-service #############\e[0m"
+    heading_func "Restarting ${component}-service"
     systemctl daemon-reload
     systemctl enable ${component}
     systemctl restart ${component}
