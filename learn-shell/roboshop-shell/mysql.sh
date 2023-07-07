@@ -2,6 +2,12 @@ script=$(realpath "$0")
 script_path=$(dirname "$script")
 source ${script_path}/common.sh
 my_sql_password=#1
+
+if [ -z "$my_sql_password" ]; then
+    heading_func "Input mysql-password is missing"
+    exit
+echo
+
 echo -e "\e[36m########### Disabling mysql default version #############\e[0m"
 yum module disable mysql -y
 

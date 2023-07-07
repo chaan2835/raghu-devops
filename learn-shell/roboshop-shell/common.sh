@@ -6,6 +6,17 @@ heading_func(){
     echo -e "\e[36m########### $1 #############\e[0m"
 }
 
+schema_setup_func(){
+    heading_func "Copying the mongo.repo to /etc"
+    cp /home/centos/raghu-devops/learn-shell/roboshop-shell/mongo.repo /etc/yum.repos.d/mongo.repo
+
+    heading_func "Installing mongodb client"
+    yum install mongodb-org-shell -y
+
+    heading_func "Loading schema--->{component}"
+    mongo --host mongodb.roboshopk8.online </app/schema/${component}.js
+}
+
 func_nodejs(){
 
     heading_func "Configuring nodejs repos"
@@ -38,4 +49,5 @@ func_nodejs(){
     systemctl daemon-reload
     systemctl enable ${component}
     systemctl restart ${component}
+    schema_setup_func
 }
