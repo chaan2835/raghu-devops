@@ -1,4 +1,5 @@
-script_path=$(dirname $0)
+script=$(realpath "$0")
+script_path=$(dirname "$script")
 source ${script_path}/common.sh
 
 echo -e "\e[36m########### Disabling mysql default version #############\e[0m"
