@@ -55,3 +55,39 @@ func_nodejs(){
 
     schema_setup_func
 }
+
+func_java(){
+heading_func "Installing maven" 
+yum install maven -y
+
+heading_func "creating app user" 
+useradd ${app_user}
+
+heading_func "creating application directory" 
+mkdir /app
+
+heading_func "Downlaoad app content" 
+curl -L -o /tmp/shipping.zip https://roboshop-artifacts.s3.amazonaws.com/shipping.zip
+
+heading_func "Extract app content" 
+cd /app
+unzip /tmp/shipping.zip
+
+heading_func "Downloading maven dependencies" 
+mvn clean package
+mv target/shipping-1.0.jar shipping.jar
+
+heading_func "Setting up service file"  
+cp ${script_path}/shipping.service /etc/systemd/system/shipping.service
+
+heading_func "Installing mysql" 
+yum install mysql -y
+
+heading_func "Loading schema" 
+mysql -h mysql.roboshopk8.online -uroot -p${shipping_password} < /app/schema/shipping.sql
+
+heading_func starting service 
+systemctl daemon-reload
+systemctl enable shipping
+systemctl restart shipping
+}
