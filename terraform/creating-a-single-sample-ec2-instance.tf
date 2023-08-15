@@ -1,7 +1,7 @@
 data "aws_ami" "centos" {
-  most_recent      = true
   owners           = ["817611672488"]
-  name_regex = "Centos-8-Devops-Practice"
+  most_recent      = true
+  name_regex       = "Centos-8-Devops-Practice"
 }
 
 output "ami_id" {
