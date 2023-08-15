@@ -6,3 +6,7 @@ resource "aws_instance" "single_sample_ec2_instance" {
     Name = "HelloWorld"
   }
 }
+
+output "single_sample_ec2_instance" {
+  value = aws_instance.single_sample_ec2_instance.public_ip
+}

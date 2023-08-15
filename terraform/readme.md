@@ -3,6 +3,14 @@ create iam role and attach that role to the instance
 
 aws ec2 describe-instances (used to list the instances running the region)
 
+
+installing aws cli
+python3 --version
+sudo dnf install python3
+sudo dnf install python3-pip
+pip3 install awscli --upgrade --user
+aws configure
+
 =======================================================
 working as a non root user
 installation of terraform
