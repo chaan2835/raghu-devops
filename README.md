@@ -12,3 +12,10 @@ $0 --> script name
 $1 to $n --> arguments parsed in the order
 $*,$@ --> al arguments
 $# --> Number of arguments
+------------------------
+
+passwords-to-give while running some files as an argument
+
+my-sql-password= RoboShop@1
+rabbitmq-password= roboshop123
+shipping-password= RoboShop@1

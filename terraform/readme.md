@@ -14,3 +14,13 @@ sudo yum -y install terraform
 ===========================================================
 
 all terraform files should ends with .tf
+
+terraform basic commands:
+
+1)init: In this phase it will download all the required provider plugins and also initializes the state file if it is remote
+
+2)plan: It will do what the terraform can do on our code
+
+3) apply: It'll create the actual resources
+
+4) destroy: It'll delete actual resources which we are created
