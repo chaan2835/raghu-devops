@@ -20,3 +20,11 @@ resource "aws_instance" "single_sample_ec2_instance" {
 output "single_sample_ec2_instance" {
   value = aws_instance.single_sample_ec2_instance.public_ip
 }
+
+resource "aws_route53_record" "single_sample_ec2_instance" {
+  zone_id = "Z06316191H5E0T109U87A"
+  name    = "simple.roboshopk8.online"
+  type    = "A"
+  ttl     = 30
+  records = [aws_instance.single_sample_ec2_instance.private_ip]
+}
