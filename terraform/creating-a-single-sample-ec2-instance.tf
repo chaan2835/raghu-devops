@@ -1,7 +1,7 @@
 data "aws_ami" "centos" {
-  owners           = ["973714476881"]
-  most_recent      = true
-  name_regex       = "Centos-8-DevOps-Practice"
+  owners      = ["973714476881"]
+  most_recent = true
+  name_regex  = "Centos-8-DevOps-Practice"
 }
 
 output "ami_id" {
@@ -9,7 +9,7 @@ output "ami_id" {
 }
 
 resource "aws_instance" "single_sample_ec2_instance" {
-  ami           = "data.aws_ami.centos.image_id"
+  ami           = data.aws_ami.centos.image_id  # No quotes around data reference
   instance_type = "t2.micro"
 
   tags = {
