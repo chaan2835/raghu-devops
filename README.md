@@ -1,4 +1,11 @@
 # raghu-devops
+
+session 23 (terrafrom start,iam creds,install terraform,terraform lifecycle,data sources for inputs)
+-28 (terraform)
+session 29-33 (ansible)
+session 34 (Iam role and kms access)
+session 35 (kms_decrption and elk start)
+session 36
 roboshop project end to end by raghu
 
 **Deploying a vm **
