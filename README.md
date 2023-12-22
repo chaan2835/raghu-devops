@@ -19,3 +19,9 @@ passwords-to-give while running some files as an argument
 my-sql-password= RoboShop@1
 rabbitmq-password= roboshop123
 shipping-password= RoboShop@1
+
+
+
+##########################
+https://learndevopsonline.github.io/learndevopsonline/build/docs/category/roboshop-project-setup-documentation
+###############
