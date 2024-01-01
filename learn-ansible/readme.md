@@ -49,3 +49,30 @@ ansible -i  /tmp/inv all -e ansible_user=centos -e ansible_password=DevOps321 -m
     "changed": false,
     "ping": "pong"
 }
+----------------------------------------------------------
+
+ansible-playbook -i /tmp/inv -e ansible_user=centos -e ansible_password=DevOps321 print.yml
+
+PLAY [Demo on ansible playbook] *************************************************************************************************
+
+TASK [Gathering Facts] **********************************************************************************************************
+ok: [172.31.17.214]
+ok: [172.31.23.137]
+
+TASK [Printing Hello World] *****************************************************************************************************
+ok: [172.31.17.214] => {
+    "msg": "Hello World"
+}
+ok: [172.31.23.137] => {
+    "msg": "Hello World"
+}
+
+PLAY RECAP **********************************************************************************************************************
+172.31.17.214              : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+172.31.23.137              : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+------------------------------------------------
+running the playbook using pull mechanism
+
+login to the agent-node
+
+ansible-pull -i localhost, -U https://github.com/chaan2835/raghu-devops/tree/main/learn-ansible 01-print.yml
